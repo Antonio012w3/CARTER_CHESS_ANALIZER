@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="Analizador de partidas de ajedrez con Stockfish">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <title>CARTER CHESS ANALYZER</title>
+</head>
+<body>
+<header>
+  <div class="brand"><span class="knight">♞</span><div><b>CARTER CHESS</b><small>ANALYZER</small></div></div>
+  <span class="pill" id="engineStatus">Motor sin iniciar</span>
+</header>
+<main>
+  <section class="intro">
+    <p class="eyebrow">ANÁLISIS DE PARTIDAS</p>
+    <h1>Entendé cada<br><em>movimiento.</em></h1>
+    <p class="muted">Cargá una partida terminada y analizala con Stockfish.</p>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><h2>Tu partida</h2><span class="step">01 / CARGAR</span></div>
+    <label class="file-button">Seleccionar archivo PGN<input id="pgnFile" type="file" accept=".pgn,text/plain"></label>
+    <textarea id="pgnInput" placeholder="O pegá aquí el PGN de tu partida..."></textarea>
+    <button class="primary" id="loadGame">Cargar partida</button>
+    <p class="hint">Podés exportar el PGN de una partida finalizada desde Chess.com.</p>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><h2>Tablero</h2><span class="step">02 / REVISAR</span></div>
+    <div id="board" class="board" aria-label="Tablero de ajedrez"></div>
+    <div class="board-controls">
+      <button id="first" class="secondary">|‹</button><button id="prev" class="secondary">‹</button>
+      <span id="moveCounter">Sin partida</span>
+      <button id="next" class="secondary">›</button><button id="last" class="secondary">›|</button>
+    </div>
+    <div id="moveList" class="move-list">Cargá una partida para ver sus movimientos.</div>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><h2>Análisis</h2><span class="step">03 / STOCKFISH</span></div>
+    <div class="analysis-grid">
+      <div><small>EVALUACIÓN</small><strong id="eval">—</strong></div>
+      <div><small>MEJOR JUGADA</small><strong id="bestMove">—</strong></div>
+      <div><small>PROFUNDIDAD</small><strong id="depth">—</strong></div>
+    </div>
+    <button id="analyze" class="primary" disabled>Analizar posición</button>
+    <p id="analysisMessage" class="hint">Primero cargá una partida. El motor se inicia cuando lo necesites.</p>
+    <button id="analyzeAll" class="secondary wide" disabled>Analizar todas las posiciones</button>
+    <div id="allResults" class="results"></div>
+  </section>
+  <p class="disclaimer">Usá el análisis después de terminar la partida. No está diseñado para dar asistencia durante partidas en curso.</p>
+</main>
+<footer> CCA <span>·</span> Hecho para aprender ajedrez</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
